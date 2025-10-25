@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="student.css">
+</head>
+<body style="height: 1000x; width: 100%;background-image:linear-gradient(to left,lightblue,skyblue);">
+    <div class="stu">
+  <title>Student Details</title>
+  <h2>🎓 Student Management System</h2>
+
+  <label style="position: relative;left: 50px;font-size: 20px;" >Search by Name:</label>
+  <input style="position: relative;left: 50px; height: 30px;width: 60%;" type="text" id="searchName">
+  <button style="position: relative;left: 60px;" onclick="searchStudent()">Search</button>
+
+  <h3 style="position: relative;left: 50px;font-size: 20px;">Student List</h3>
+  <table id="studentTable">
+    <thead>
+      <tr>
+        <th>Roll No</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Marks</th>
+        <th>Course</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <p id="searchResult"></p>
+
+  <script>
+    let students = {
+        
+  101: { name: "Rahul", age: 18, marks: 85, course: "B.tech IT" },
+  102: { name: "Priya", age: 19, marks: 92, course: "B.E CSE" },
+  103: { name: "Karan", age: 20, marks: 78, course: "B.E CSE" },
+  104: { name: "Sneha", age: 18, marks: 88, course: "B.E CSE" },
+  105: { name: "Anita", age: 21, marks: 90, course: "B.Tech Mechanical" },
+  106: { name: "Vikram", age: 22, marks: 75, course: "B.E Electrical" },
+  107: { name: "Simran", age: 19, marks: 82, course: "B.Tech Civil" },
+  108: { name: "Aditya", age: 20, marks: 89, course: "B.E CSE" },
+  109: { name: "Neha", age: 21, marks: 84, course: "B.Tech IT" },
+  110: { name: "Aman", age: 20, marks: 77, course: "B.E Mechanical" },
+  111: { name: "Pooja", age: 19, marks: 91, course: "B.E Electrical" },
+  112: { name: "Rohit", age: 22, marks: 80, course: "B.Tech Civil" },
+  113: { name: "Kavya", age: 20, marks: 87, course: "B.E CSE" },
+  114: { name: "Saurabh", age: 21, marks: 76, course: "B.Tech IT" },
+  115: { name: "Divya", age: 18, marks: 93, course: "B.E CSE" },
+  116: { name: "Manish", age: 23, marks: 79, course: "B.Tech Mechanical" },
+  117: { name: "Riya", age: 19, marks: 85, course: "B.E Electrical" },
+  118: { name: "Siddharth", age: 20, marks: 88, course: "B.Tech Civil" },
+  119: { name: "Tanya", age: 22, marks: 90, course: "B.E CSE" },
+  120: { name: "Mohit", age: 21, marks: 83, course: "B.Tech IT" }
+
+    };
+
+    // Function to display all student details in table
+    function displayStudents() {
+      let tbody = document.querySelector("#studentTable tbody");
+      tbody.innerHTML = ""; // clear existing rows
+
+      for (let roll in students) {
+        let s = students[roll];
+        let row = document.createElement("tr");
+
+        row.innerHTML = `
+          <td>${roll}</td>
+          <td>${s.name}</td>
+          <td>${s.age}</td>
+          <td>${s.marks}</td>
+          <td>${s.course}</td>
+        `;
+
+        tbody.appendChild(row);
+      }
+    }
+
+    // Function to search student by name
+    function searchStudent() {
+      let searchName = document.getElementById("searchName").value.toLowerCase();
+      let result = document.getElementById("searchResult");
+      let found = false;
+
+      for (let roll in students) {
+        if (students[roll].name.toLowerCase() === searchName) {
+          let s = students[roll];
+          result.innerHTML =
+            `<b>Found:</b><br>
+             Roll No: ${roll}<br>
+             Name: ${s.name}<br>
+             Age: ${s.age}<br>
+             Marks: ${s.marks}<br>
+             Course: ${s.course}`;
+          found = true;
+          break;
+        }
+      }
+
+      if (!found) {
+        result.innerHTML = "❌ Student not found!";
+      }
+    }
+
+    displayStudents();
+  </script>
+  
+
+    </div>
+    
+</body>
+</html>

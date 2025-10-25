@@ -1,0 +1,12 @@
+.page{
+    background-image:linear-gradient(to left,skyblue,white);
+    height: 550px;
+    width: 90%;
+    position: relative;
+    top: 70px;
+    left: 60px;
+    border-radius: 100px;
+    border: 1px black solid;
+
+
+}
